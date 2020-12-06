@@ -1,0 +1,50 @@
+{
+  "name": "rentopsbe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix ../guhitFE",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Christopher-Cudiamat/rentops-BE.git"
+  },
+  "keywords": [
+    "rentopsBE"
+  ],
+  "author": "Christopher Cudiamat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Christopher-Cudiamat/rentops-BE/issues"
+  },
+  "homepage": "https://github.com/Christopher-Cudiamat/rentops-BE#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
+    "config": "^3.3.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-promise-router": "^4.0.1",
+    "gravatar": "^1.8.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.1",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.4.11",
+    "nodemailer-express-handlebars": "^4.0.0",
+    "nodemailer-handlebars": "^1.0.1",
+    "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  }
+}

@@ -1,0 +1,8 @@
+{ 
+  
+  "mongoURI": "mongodb+srv://rentops2020:rentops2020@rentops.8aaev.mongodb.net/rentopsDB?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken",
+  "mailer": "rentops.properties@gmail.com",
+  "password": "02122020.rentops",
+  "client_url": "http://localhost:3000"
+}
