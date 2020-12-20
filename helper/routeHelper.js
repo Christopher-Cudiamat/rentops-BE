@@ -19,7 +19,8 @@ module.exports = {
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
       email: Joi.string().email().required(),
-      password: Joi.string().required()
+      password: Joi.string().required(),
+      termsAndConditions: Joi.boolean().required()
     })
   }
 }

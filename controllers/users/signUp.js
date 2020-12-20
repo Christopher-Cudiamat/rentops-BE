@@ -27,9 +27,10 @@ module.exports = {
       firstName,
       lastName,
       email,
-      password
+      password,
+      termsAndCondition
     } = req.body;
-
+    console.log(req.body)
     let verificationCode =  Math.floor(Math.random() * 100000) + 1;
 
     const emailExistInLocalUser = await User.findOne({"local.email":email});
@@ -48,6 +49,7 @@ module.exports = {
       email,
       password,
       avatar,
+      termsAndCondition,
       verificationCode
     });
 

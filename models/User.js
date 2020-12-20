@@ -21,6 +21,9 @@ const UserSchema = new mongoose.Schema({
     password: {
       type: String,
     },
+    termsAndCondition: {
+      type: Boolean,
+    },
   },
   facebook: {
     id: {
