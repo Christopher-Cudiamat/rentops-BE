@@ -31,11 +31,12 @@ module.exports = {
       termsAndCondition
     } = req.body;
     console.log(req.body)
+
     let verificationCode =  Math.floor(Math.random() * 100000) + 1;
 
     const emailExistInLocalUser = await User.findOne({"local.email":email});
 
-    if(emailExistInLocalUser)  res.status(422).json({error: 'Email is already in use'});
+    if(emailExistInLocalUser) res.status(422).json({error: 'Email is already in use'});
 
     const avatar = gravatar.url(email,{
       s: '200',
@@ -92,11 +93,11 @@ module.exports = {
  
     transporter.sendMail(body,(err) => {
       
-      if(err) false;
+      if(err) {false};
       
       return res.json({
         token,
-        message: 'Hi! we sent you an e-mail, kindly check your inbox to activate the account.'
+        message: `Hi! ${firstName}, we sent you a verification code at ${email}. Please check your inbox to and continue signing up.`
       });
     });
   }

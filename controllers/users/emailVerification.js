@@ -17,16 +17,17 @@ module.exports = {
   emailVerification: async(req, res) => {
     
     const {token,insertedVerificationCode}  = req.body;
+    console.log(req.body)
 
     if(token) {
 
       JWT.verify(token,config.get('jwtSecret'),(err,decodedToken) => {
 
-        if(err) res.status(400).json({error:'Incorrect or Expired link.'});
+        if(err) res.status(422).json({error:'Incorrect verification code'});
    
         const {
           firstName,
-          LastName,
+          lastName,
           email,
           password,
           avatar,
