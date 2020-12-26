@@ -21,7 +21,7 @@ const signToken = (user) => {
 
 module.exports = {
 
-  postSignUp: async(req, res) => {
+  postSignUp: async(req, res,) => {
 
     let {
       firstName,

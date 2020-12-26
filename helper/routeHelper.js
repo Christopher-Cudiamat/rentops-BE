@@ -15,12 +15,25 @@ module.exports = {
     }
   },
   schemas : {
-    userAuthSchema: Joi.object({
+    signUpSchema: Joi.object({
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
       termsAndConditions: Joi.boolean().required()
-    })
+    }),
+    signInSchema: Joi.object({
+      email: Joi.string().email().required(),
+      password: Joi.string().required()
+    }),
+    sendOtpSchema: Joi.object({
+      firstName: Joi.string().required(),
+      lastName: Joi.string().required(),
+      email: Joi.string().email().required(),
+    }),
+    changePassword: Joi.object({
+      email: Joi.string().email().required(),
+      newPassword: Joi.string().required()
+    }),
   }
 }
