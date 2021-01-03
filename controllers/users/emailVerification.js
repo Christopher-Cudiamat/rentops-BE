@@ -52,7 +52,13 @@ module.exports = {
 
         const newToken = signToken(newUser);
 
-        res.status(200).json({newToken,email});
+        res.status(200).json({
+          token: newToken,
+          email,
+          isAuthenticated: true,
+          lastName,
+          firstName
+        });
 
       });
     }

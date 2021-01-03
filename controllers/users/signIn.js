@@ -27,9 +27,15 @@ module.exports = {
       );
 
       if(!user) res.status(422).json({error: 'Invalid credentials'});
-      
+
       const token = signToken(user);
-      res.status(200).json({token});
+      res.status(200).json({
+        token,
+        email,
+        isAuthenticated: true,
+        firstName: user.local.firstName,
+        lastName: user.local.lastName
+      });
     } catch (error) {
       res.status(500).send('Server Error');
     }

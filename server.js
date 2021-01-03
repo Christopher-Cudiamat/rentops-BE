@@ -21,6 +21,7 @@ app.get('/', (req,res) => res.send('API IS UP AND RUNNING'));
 //Define Routes
 app.use('/api/structure', require('./routes/api/structure'));
 app.use('/api/user', require('./routes/api/users'));
+app.use('/api/property', require('./routes/api/properties'));
 
 app.use(passport.initialize());
 require('./passport')(passport);
