@@ -10,13 +10,14 @@ module.exports = {
       propertyType,
       furnish,
       contractLength,
-      developer,
       bed,
       bathroom,
-      amenities
+      amenities,
+      priceMin,
+      priceMax,
+      sizeMax,
+      sizeMin
     } = req.query
-    console.log("AMN", req.query);
-    console.log("AMN", req.query.amenities);
  
     var sortParam = {};
     var filterParam = {};
@@ -45,25 +46,47 @@ module.exports = {
     }
    
     if(location) filterParam['propertyInfo.location'] = location;
-    if(propertyType) filterParam['propertyInfo.propertyType'] = propertyType;
-    if(furnish) filterParam['propertyInfo.furnish'] = furnish;
-    if(contractLength) filterParam['propertyInfo.contractLength'] = contractLength;
-    if(developer) filterParam['propertyInfo.developer'] = developer;
+
+    if(propertyType && propertyType.length > 0) {
+      filterParam['propertyInfo.propertyType'] = {$in: propertyType[0].split(',')};
+    }
+
+    if(furnish && furnish.length > 0) {
+      filterParam['propertyInfo.furnish'] = {$in: furnish[0].split(',')};
+    }
+
+    if(contractLength && contractLength.length > 0) {
+      filterParam['propertyInfo.contractLength'] = {$in: contractLength[0].split(',')};
+    }
+
     if(bed) filterParam['propertyInfo.bed'] = bed;
+
     if(bathroom) filterParam['propertyInfo.bathroom'] = bathroom;
+
     if(amenities && amenities.length > 0) {
-      console.log("SPLIT",amenities[0].split(','));
       filterParam['propertyInfo.amenities'] = {$all: amenities[0].split(',')};
     }
-    console.log(filterParam);
-    // 'propertyInfo.amenities': { $all:[ 'Air Condition','Garage','CCTV' ]}
+
+    if(priceMax && priceMin) {
+      filterParam['propertyInfo.price'] = {
+        $gte :  priceMin,
+        $lte :  priceMax
+      }
+    }
+
+    if(sizeMax && sizeMin) {
+      filterParam['propertyInfo.size'] = {
+        $gte :  sizeMin,
+        $lte :  sizeMax
+      }
+    }
+
     try {
     
       const properties = await Property.find(
         Object.keys(filterParam).length !== 0 ? filterParam : null
       )
       .sort(sortParam);      
-      console.log(properties)
 
       if(!properties) {
         return res.status(422).json({msg: 'No property result'})
