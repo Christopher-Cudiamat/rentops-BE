@@ -24,6 +24,9 @@ const UserSchema = new mongoose.Schema({
     termsAndCondition: {
       type: Boolean,
     },
+    likes:{
+      type: [Object], 
+    },
   },
   facebook: {
     id: {

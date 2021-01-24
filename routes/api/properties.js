@@ -5,8 +5,9 @@ const AddPropertyController = require('../../controllers/property/addProperty');
 const GetAddedPropertiesController = require('../../controllers/property/getAddedProperties');
 const GetAllPropertiesController = require('../../controllers/property/getAllProperties');
 const GetPropertyController = require('../../controllers/property/getProperty');
+const FavoritePropertyController = require('../../controllers/property/favoriteProperty');
 
-// @route   POST api/users/add-property
+// @route   POST api/property/add-property
 // @desc    post a property to lease
 // @access  private
 router.post(
@@ -16,7 +17,17 @@ router.post(
   AddPropertyController.postAddProperty
 );
 
-// @route   GET api/added-properties
+// @route   POST api/property/favorite-property
+// @desc    post add a favorite property
+// @access  private
+router.post(
+  '/favorite-property',
+  // validateBody(schemas.signUpSchema),
+  passport.authenticate('jwt',{session:false}),
+  FavoritePropertyController.postFavoriteProperty
+);
+
+// @route   GET api/property/added-properties
 // @desc    get a property to lease
 // @access  private
 router.get(
@@ -25,7 +36,7 @@ router.get(
   GetAddedPropertiesController.getAddedProperties
 );
 
-// @route   GET api/get-all-properties
+// @route   GET api/property/get-all-properties
 // @desc    get list of properties 
 // @access  public
 router.get(
@@ -33,7 +44,7 @@ router.get(
   GetAllPropertiesController.getAllProperties
 );
 
-// @route   GET api/get-property
+// @route   GET api/property/get-property
 // @desc    get a property 
 // @access  public
 router.get(

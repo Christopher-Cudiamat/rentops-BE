@@ -57,7 +57,8 @@ module.exports = {
           email,
           isAuthenticated: true,
           lastName,
-          firstName
+          firstName,
+          membershipDate: createdAt
         });
 
       });

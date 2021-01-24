@@ -14,25 +14,28 @@ const PropertySchema = new mongoose.Schema({
       type: Number
     },
     size: {
-      type: Number,
+      type: Number
     },
     propertyType: {
-      type: String,
+      type: String
     },
     contractLength: {
-      type: String,
+      type: String
     },
     furnish: {
-      type: String,
+      type: String
     },
     bed: {
-      type: String,
+      type: String
     },
     bathroom: {
-      type: String,
+      type: String
     },
     developer: {
-      type: String,
+      type: String
+    },
+    description: {
+      type: String
     },
     amenities: [{
       type: String
@@ -60,7 +63,10 @@ const PropertySchema = new mongoose.Schema({
       dataURL: String,
       file:  Object
     }]
-  }
+  },
+  likes:{
+    type: [Object], 
+  },
   
 },{
   timestamps: true
