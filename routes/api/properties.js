@@ -4,6 +4,7 @@ const passport = require('passport');
 const AddPropertyController = require('../../controllers/property/addProperty');
 const GetAddedPropertiesController = require('../../controllers/property/getAddedProperties');
 const GetAllPropertiesController = require('../../controllers/property/getAllProperties');
+const GetPropertyController = require('../../controllers/property/getProperty');
 
 // @route   POST api/users/add-property
 // @desc    post a property to lease
@@ -24,9 +25,20 @@ router.get(
   GetAddedPropertiesController.getAddedProperties
 );
 
+// @route   GET api/get-all-properties
+// @desc    get list of properties 
+// @access  public
 router.get(
   '/get-all-properties',
   GetAllPropertiesController.getAllProperties
+);
+
+// @route   GET api/get-property
+// @desc    get a property 
+// @access  public
+router.get(
+  '/get-property',
+  GetPropertyController.getProperty
 );
 
 
