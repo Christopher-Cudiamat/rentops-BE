@@ -11,7 +11,7 @@ const signToken = (user) => {
     exp: new Date().setDate(new Date().getDate() + 1)
   },config.get('jwtSecret'));
 };
-
+ 
 
 module.exports = {
   
@@ -58,7 +58,6 @@ module.exports = {
           isAuthenticated: true,
           lastName,
           firstName,
-          membershipDate: createdAt
         });
 
       });

@@ -10,6 +10,12 @@ const PropertySchema = new mongoose.Schema({
     location:{
       type: String
     },
+    latitude:{
+      type: String
+    },
+    longitude:{
+      type: String
+    },
     price: {
       type: Number
     },
@@ -59,10 +65,7 @@ const PropertySchema = new mongoose.Schema({
     propertyPhoto: [{
       type: String
     }],
-    galleryPhotos : [{
-      dataURL: String,
-      file:  Object
-    }]
+    galleryPhotos : []
   },
   likes:{
     type: [Object], 

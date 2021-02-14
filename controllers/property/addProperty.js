@@ -4,7 +4,7 @@ const Property = require('../../models/Property');
 module.exports = {
 
   postAddProperty: async(req, res) => {
-
+    console.log(req.body)
     const propertyFields = {
       user: req.user.id,
       propertyInfo: {
