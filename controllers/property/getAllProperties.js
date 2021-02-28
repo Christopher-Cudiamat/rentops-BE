@@ -16,7 +16,9 @@ module.exports = {
       priceMin,
       priceMax,
       sizeMax,
-      sizeMin
+      sizeMin,
+      skip,
+      limit
     } = req.query
  
     var sortParam = {};
@@ -86,13 +88,23 @@ module.exports = {
       const properties = await Property.find(
         Object.keys(filterParam).length !== 0 ? filterParam : null
       )
-      .sort(sortParam);      
+      .skip(parseInt(skip))
+      .limit(parseInt(limit))
+      .sort(sortParam);  
+      
+      let dataLength = 0;
+
+      const countDocuments = await Property.find(
+        Object.keys(filterParam).length !== 0 ? filterParam : null
+      )
+
+      dataLength = countDocuments.length;
 
       if(!properties) {
         return res.status(422).json({msg: 'No property result'})
       }
 
-      res.json(properties);
+      res.json({properties,dataLength});
     } catch (error) {
       res.status(500).send('Ooops something went wrong please try again later');
     }
