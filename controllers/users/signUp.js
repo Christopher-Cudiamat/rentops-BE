@@ -31,8 +31,10 @@ module.exports = {
       termsAndCondition
     } = req.body;
     console.log(req.body)
-
-    let verificationCode =  Math.floor(Math.random() * 100000) + 1;
+    //Generate random verification code
+    //BUG- figure out why email is not sending
+    // let verificationCode = Math.floor(Math.random() * 100000) + 1;
+    let verificationCode = 12345;
 
     const emailExistInLocalUser = await User.findOne({"local.email":email});
 

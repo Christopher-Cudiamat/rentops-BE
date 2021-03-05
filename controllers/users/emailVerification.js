@@ -58,6 +58,7 @@ module.exports = {
           isAuthenticated: true,
           lastName,
           firstName,
+          likes: []
         });
 
       });

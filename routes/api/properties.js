@@ -22,7 +22,6 @@ router.post(
 // @access  private
 router.post(
   '/favorite-property',
-  // validateBody(schemas.signUpSchema),
   passport.authenticate('jwt',{session:false}),
   FavoritePropertyController.postFavoriteProperty
 );

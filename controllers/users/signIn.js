@@ -34,7 +34,8 @@ module.exports = {
         email,
         isAuthenticated: true,
         firstName: user.local.firstName,
-        lastName: user.local.lastName
+        lastName: user.local.lastName,
+        likes: user.local.likes
       });
     } catch (error) {
       res.status(500).send('Server Error');
